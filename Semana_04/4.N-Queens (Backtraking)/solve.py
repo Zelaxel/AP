@@ -16,6 +16,15 @@ def solve(num_queens):
     solutions_list = []
 
     # solve it here!
+
+    """Chequea que la solución sea valida."""
+    def valid(solution):
+        for i in range(len(solution)-1):
+            for j in range(i+1,len(solution)):
+                if (solution[i] == solution[j]) or (j-i == abs(solution[j]-solution[i])): # Chequea que no haya 2 reinas por diagonal o por diagonal.
+                    return False
+        return True
+
     def bkt(solution):
         if not valid(solution): # Mata la rama ya que no es valida.
             return 
@@ -24,14 +33,6 @@ def solve(num_queens):
         else: # Se recorre el arbol.
             for i in range(num_queens):
                 bkt(solution+[i])
-    
-    """Chequea que la solución sea valida."""
-    def valid(solution):
-        for i in range(len(solution)-1):
-            for j in range(i+1,len(solution)):
-                if (solution[i] == solution[j]) or (j-i == abs(solution[j]-solution[i])): # Chequea que no haya 2 reinas por diagonal o por diagonal.
-                    return False
-        return True
     
     # Primera combinación.
     bkt([])
