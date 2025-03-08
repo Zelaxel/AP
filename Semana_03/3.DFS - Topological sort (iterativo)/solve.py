@@ -29,6 +29,7 @@ def dfs_topological_sort(graph):
     S = Stack()
 
     def dfs_iterative(u):
+        """DFS"""
         nonlocal N
         #  1. Añade código aqui
         #  ...
