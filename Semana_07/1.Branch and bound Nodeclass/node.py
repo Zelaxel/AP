@@ -2,6 +2,7 @@ from collections import namedtuple
 
 Item = namedtuple("Item", ['index', 'value', 'weight'])
 
+"""Clase nodo."""
 class Node:
     def __init__(self, index, taken, value, room):
         self.index = index
