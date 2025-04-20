@@ -53,11 +53,9 @@ def solve_branch_and_bound_DFS(capacity, items, record_visiting_order = False):
         # ...
         if current.index != len(items):
             index = current.index
-            taken = current.taken.copy()
-            value = current.value
             
-            left = Node(index+1, taken+[index], value+items[index].value, capacity)
-            right = Node(index+1, taken, value, capacity)
+            left = Node(index+1, [], 0, 0)
+            right = Node(index+1, [], 0, 0)
             
             alive.append(right)
             alive.append(left)
