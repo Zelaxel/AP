@@ -46,7 +46,7 @@ def solve_branch_and_bound_DFS(capacity, items, record_visiting_order = False):
         # Condiciones de poda
         # ...
         
-        if not (current.room > 0 and current.estimate(items) > mejor_solucion.value):
+        if current.room < 0 or current.estimate(items) <= mejor_solucion.value:
             continue
 
         # Si no hemos llegado al final del árbol
