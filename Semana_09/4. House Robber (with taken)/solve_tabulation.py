@@ -14,7 +14,7 @@ def solve_tabulation(items):
         # ...
         
         table.append(items[0])
-        table.append(items[1])
+        table.append(max(items[0],items[1]))
         for n in range(2, len(items)):
             table.append(max(table[n-2] + items[n], table[n-1]))
         
@@ -27,7 +27,7 @@ def solve_tabulation(items):
         # ...
         ben = table[-1]
         for i in range(len(table)-1, -1, -1):
-            if table[i] == ben and(i == 0 or  table[i-1] != ben):
+            if table[i] == ben and (i == 0 or  table[i-1] != ben):
                 taken.append(i+1)
                 ben = ben - items[i]
         taken.sort()

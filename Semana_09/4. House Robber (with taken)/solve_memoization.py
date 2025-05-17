@@ -13,12 +13,10 @@ def solve_memoization(items):
         # ...
         #   Aviso: Para resolver este ejercicio no es valido
         #          utilizar el soporte de @functools
+        if(n < 0): return 0
+
         if n not in mem:
-            if n < 0:
-                r = 0
-            else:
-                r = max(t(n-2)+items[n], t(n-1))
-            mem[n] = r
+            mem[n] = max(t(n-2)+items[n], t(n-1))
         return mem[n]
         
     def fill_taken():
@@ -28,7 +26,7 @@ def solve_memoization(items):
         # transparencias el contenido de esta lista es: [2,5]
         # (la segunda casa y la quinta casa).
         # ...
-        table = list(mem.values())[2:]
+        table = list(mem.values())
         ben = table[-1]
         for i in range(len(table)-1, -1, -1):
             if table[i] == ben and(i == 0 or  table[i-1] != ben):
