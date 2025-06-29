@@ -29,7 +29,7 @@ def solve_memoization(items):
         table = list(mem.values())
         ben = table[-1]
         for i in range(len(table)-1, -1, -1):
-            if table[i] == ben and(i == 0 or  table[i-1] != ben):
+            if table[i] <= ben and(i == 0 or table[i-1] != table[i]):
                 taken.append(i+1)
                 ben = ben - items[i]
 
