@@ -41,6 +41,6 @@ constraint main[fat] + side[fat] + dessert[fat] <= max_fat;
 
 constraint budget = main[cost] + side[cost] + dessert[cost];
 
-constraint sum(f in special_foods)(f == main[name] \/ f == side[name] \/ f == dessert[name]) <= max_special_foods;
+constraint (main[name] in special_foods) + (side[name] in special_foods) + (dessert[name] in special_foods) <= max_special_foods;
 
 solve minimize budget;
