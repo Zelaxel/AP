@@ -1,2 +1,5 @@
-lista = [1,2,3,4,5]
-print(lista[:-1])
+import numpy as np
+
+nums = np.random.randint(1,10,10)
+
+print(*nums)
