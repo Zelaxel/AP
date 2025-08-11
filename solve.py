@@ -1,42 +1,42 @@
-import networkx as nx
+#!/usr/bin/env python
+# -*- coding: utf -8 -*-
 
-def solve(input_list):
-    num_solutions = 0
-    all_paths = []
+def solve(input_list, voltage):
+    solution_list = []
+    modulos = []
 
-    G = nx.Graph()
-    for edge in input_list:
-        nodes = edge.split("-")
-        G.add_edge(nodes[0], nodes[1])
+    # Programa tu código aquí.
+    # ...
 
-    def valid(camino):
-        if camino.count("start") > 1:
-            return False  
-        
-        caverna_repetida = None
-        for cavern in camino:
-            if cavern.islower():
-                if camino.count(cavern) > 2:
-                    return False
-                elif caverna_repetida is None and camino.count(cavern) == 2:
-                    caverna_repetida = cavern
-                elif caverna_repetida != cavern and camino.count(cavern) == 2:
-                    return False
-                
-        return True
+    # Convertimos los inputs a lista de listas de enteros.
+    for modulo in input_list:
+        lista = modulo.split(' ')
+        lista[0] = int(lista[0])
+        lista[1] = int(lista[1])
+        modulos.append(lista)
 
-    def dfs(camino):
-        nonlocal num_solutions
+    best = len(modulos)
 
-        if valid(camino):
-            current = camino[-1]
-            if current == "end": # Final
-                num_solutions += 1
-                all_paths.append(camino)
-            else:
-                for cavern in G.neighbors(current):
-                    dfs(camino + [cavern])
-            
-    dfs(["start"])
+    def dfs(cargador):
+        nonlocal best
+        nonlocal solution_list
 
-    return num_solutions, all_paths
+        current = [0,0]
+        if len(cargador) > 0:
+            current = cargador[-1]
+
+        if current[1] == voltage and len(cargador) <= best and cargador not in solution_list:
+            if len(cargador) < best:
+                best = len(cargador)
+                solution_list = []
+            solution_list.append(cargador)
+        else:
+            for modulo in modulos:
+                if modulo[0] == current[1] and modulo not in cargador:
+                    dfs(cargador + [modulo])
+
+
+    dfs([])
+
+    return solution_list
+
