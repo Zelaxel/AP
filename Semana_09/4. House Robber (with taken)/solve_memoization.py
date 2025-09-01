@@ -27,11 +27,14 @@ def solve_memoization(items):
         # (la segunda casa y la quinta casa).
         # ...
         table = list(mem.values())
-        ben = table[-1]
-        for i in range(len(table)-1, -1, -1):
-            if table[i] <= ben and(i == 0 or table[i-1] != table[i]):
-                taken.append(i+1)
-                ben = ben - items[i]
+        t = table
+        b = table[-1]
+        i = len(table)-1
+        while i > 0 and b > 0:
+            if t[i] == b and (i == 0 or t[i] != t[i-1]):
+                taken.insert(0,i+1)
+                b = b-items[i]
+            i-=1
 
     n = len(items) - 1    
     max_benefit = t(n)

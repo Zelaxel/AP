@@ -10,28 +10,31 @@ def solve_memoization(items, capacity):
         # ...
         
         key = (n,w)
-        
+
         if key not in mem:
-            if n < 0 or w == 0:
-                r = 0
-            elif items[n].weight > w:
-                r = t(n-1, w)
+            weight = items[n].weight
+            value = items[n].value
+            if n < 0:
+                mem[key] = 0
+            elif weight > w:
+                mem[key] = t(n-1,w)
             else:
-                r = max(t(n-1, w), t(n-1, w-items[n].weight)+items[n].value)
-            mem[key] = r
+                mem [key] = max(t(n-1,w), t(n-1,w-weight)+value)
         return mem[key]
+            
 
     def fill_taken():
         # Segunda fase: Rellenamos la lista 'taken' con el
         # indice de los items elegidos.
         # ...
-        
-        values = list(mem.values())
-        ben = values[-1]
-        for i in range(len(values)-1, -1, -1):
-            if values[i] <= ben and (i == 0 or values[i-1] != ben):
-                ben = items[i].value
-                taken.append(i)
+        i = len(items)-1
+        k = capacity
+
+        while 0 <= i and 0 < k:
+            if t(i,k) != t(i-1,k):
+                taken.insert(0,i+1)
+                k -= items[i].weight
+            i-=1
             
         
 

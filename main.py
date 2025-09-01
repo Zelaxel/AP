@@ -1,22 +1,31 @@
-from solve import *
+from solve_memoization import *
+from solve_tabulation  import *
 
 first_line = input().split()
-num_lines = int(first_line[0])
-voltage = int(first_line[1])
+item_count = int(first_line[0])
 
-input_list = []
-for j in range(num_lines):
-    input_list.append(input())
+items = []
+for i in range(1, item_count+1):
+    parts = input().split()
+    items.append(int(parts[0]))
 
-try:
-    solution_list = solve(input_list, voltage)
+# Comenzamos programando la recurrencia mediante tabulation
+value1, taken1 = solve_tabulation(items)
+print(value1)
+print(taken1)
 
-    # VPL output
+# Cuando termines tabulation, comenta el código anterior
+# para desactivarlo (la llamada a solve_tabulation y los
+# dos print) y descomenta las siguientes lineas para que
+# programes la recurrencia mediante memoization.
 
-    for sublist in solution_list:
-        print(sublist)
+value2, taken2 = solve_memoization(items)
+print(value2)
+print(taken2)
 
-    print(len(solution_list), "solutions")
+# Cuando termines los dos ejercicios puedes activar estas
+# lineas para comprobar que los dos dan exactamente los
+# mismos resultados.
 
-except:
-    print("wrong code; exception raised")
+assert value1 == value2
+assert taken1 == taken2

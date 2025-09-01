@@ -25,12 +25,14 @@ def solve_tabulation(items):
         # transparencias el contenido de esta lista es: [2,5]
         # (la segunda casa y la quinta casa).
         # ...
-        ben = table[-1]
-        for i in range(len(table)-1, -1, -1):
-            if table[i] == ben and (i == 0 or  table[i-1] != ben):
-                taken.append(i+1)
-                ben = ben - items[i]
-        taken.sort()
+        t = table
+        b = table[-1]
+        i = len(table)-1
+        while i > 0 and b > 0:
+            if t[i] == b and (i == 0 or t[i] != t[i-1]):
+                taken.insert(0,i+1)
+                b = b-items[i]
+            i-=1
         
     fill_table()
     fill_taken()

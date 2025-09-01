@@ -14,8 +14,8 @@ for i in range(1, N+1):
     items.append(Item(i, int(parts[0]), int(parts[1])))
 
 # Comenzamos programando la recurrencia mediante tabulation
-# value1, taken1 = solve_tabulation(items, capacity)
-# print(value1, taken1)
+value1, taken1 = solve_tabulation(items, capacity)
+print(value1, taken1)
 
 # Cuando termines tabulation, comenta el código anterior
 # para desactivarlo (la llamada a solve_tabulation y los
@@ -29,5 +29,5 @@ print(value2, taken2)
 # lineas para comprobar que los dos dan exactamente los
 # mismos resultados.
 
-# assert value1 == value2
-# assert taken1 == taken2
+assert value1 == value2
+assert taken1 == taken2

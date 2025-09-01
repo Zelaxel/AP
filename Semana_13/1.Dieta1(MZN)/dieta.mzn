@@ -7,13 +7,13 @@ int: max_fat;
 set of FOOD: desserts;
 set of FOOD: mains;
 set of FOOD: sides;
-enum FEATURE = { name, energy, protein, salt, fat, cost};
+enum FEATURE = {name, energy, protein, salt, fat, cost};
 enum FOOD;
 array[FOOD, FEATURE] of int: dd;
 
 set of FOOD: special_foods;   % Conjunto de comidas especiales
 int: max_special_foods;       % Máximo de comidas especiales que podemos utilizar
-    
+
 array[FEATURE] of var int: main;
 array[FEATURE] of var int: side;
 array[FEATURE] of var int: dessert;
