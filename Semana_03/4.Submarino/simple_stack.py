@@ -16,7 +16,3 @@ class Stack:
 
    def size(self):
        return len(self.items)
-   
-Stack = [2,3,4]
-a = Stack.peek()
-a = 4

@@ -18,4 +18,4 @@ def solve(input_list):
 
     # Devolvemos la distancia absoluta recorrida en los ejes x e y.
     return abs(distancias[0] - distancias[180]) + \
-           abs(distancias[90] - distancias[270]) 
+           abs(distancias[90] - distancias[270])

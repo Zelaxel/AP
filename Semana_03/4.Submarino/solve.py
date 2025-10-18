@@ -21,12 +21,13 @@ def solve(input_list):
             current = solution[-1] # Tomamos el último nodo del camino.
             if current == 'end': # Llegó al final de la cueva.
                 num_solutions += 1
-                all_paths.append(solution)
+                all_paths.append(solution.copy())
             else: # Explora otros caminos.
                 for n in g.neighbors(current):
-                    dfs(solution + [n])
+                    solution.append(n)
+                    dfs(solution)
+                    solution.pop()
     
     dfs(['start']) # Empieza el recorrido en el 'start'.
 
     return num_solutions, all_paths
-

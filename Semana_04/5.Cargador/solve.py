@@ -1,6 +1,3 @@
-#!/usr/bin/env python
-# -*- coding: utf -8 -*-
-
 def solve(input_list, voltage):
     solution_list = []
 

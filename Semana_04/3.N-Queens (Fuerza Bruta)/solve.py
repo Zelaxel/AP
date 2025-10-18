@@ -22,7 +22,7 @@ def solve(num_queens):
     def valid(solution):
         for i in range(len(solution)-1):
             for j in range(i+1, len(solution)):
-                if (solution[i] == solution[j]) or (abs(j-i) == abs(solution[j]-solution[i])): # Chequea que no haya 2 reinas por fila y que no haya 2 reinas por diagonal.
+                if (solution[i] == solution[j]) or (j-i == abs(solution[j]-solution[i])): # Chequea que no haya 2 reinas por fila y que no haya 2 reinas por diagonal.
                     return False
         return True
 

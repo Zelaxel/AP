@@ -29,11 +29,13 @@ def solve(num_queens):
         """Backstraking."""
         if valid(solution): # Comprueba si es valida. 
             if len(solution) == num_queens: # Lo añade a la lista.
-                solutions_list.append(solution)
+                solutions_list.append(solution.copy())
             else: # Recorre la rama.
                 for i in range(num_queens):
-                    bkt(solution+[i])
-    
+                    solution.append(i)
+                    bkt(solution)
+                    solution.pop()
+
     # Primera combinación.
     bkt([])
         
